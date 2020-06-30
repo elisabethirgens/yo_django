@@ -12,3 +12,7 @@ https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments
 ## Get started
 
 - `python manage.py runserver`
+
+## Run tests
+
+- `python manage.py test polls`
