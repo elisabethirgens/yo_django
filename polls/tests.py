@@ -44,6 +44,7 @@ def create_question(question_text, days):
 
 
 class QuestionIndexViewTests(TestCase):
+
     def test_no_questions(self):
         """
         If no questions exist, display an appropriate message.
@@ -97,7 +98,9 @@ class QuestionIndexViewTests(TestCase):
             ['<Question: Past question 2.>', '<Question: Past question 1.>']
         )
 
+
 class QuestionDetailViewTests(TestCase):
+
     def test_future_question(self):
         """
         Detail view of question with future pub_date returns a 404
@@ -115,3 +118,12 @@ class QuestionDetailViewTests(TestCase):
         url = reverse('polls:detail', args=(past_question.id,))
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)
+
+
+class QuestionResultsViewTests(TestCase):
+
+    def test_future_question(self):
+        future_question = create_question(question_text='Future question result', days=3)
+        url = reverse('polls:results', args=(future_question.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
