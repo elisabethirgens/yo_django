@@ -16,3 +16,9 @@ https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments
 ## Run tests
 
 - `python manage.py test polls`
+
+## Django source files
+
+Find path with:
+
+- `python -c "import django; print(django.__path__)"`
